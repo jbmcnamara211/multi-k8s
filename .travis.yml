@@ -3,7 +3,7 @@ services:
   - docker
   
 before_install:
-  - docker build -t jbmcnamara/multi-docker -f ./client/Dockerfile.dev ./client
+  - docker build -t jbmcnamara211/multi-docker -f ./client/Dockerfile.dev ./client
     
 script:
   - docker run jbmcnamara211/multi-docker npm test -- --coverage
