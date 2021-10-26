@@ -16,7 +16,7 @@ services:
     - docker build -t jbmcnamara/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u  "$DOCKER_ID" --password-stdin
-    # Take those images and push them to docker hub
+    # Take those images and push them to docker hub today
     - docker push jbmcnamara/multi-client 
     - docker push jbmcnamara/multi-nginx 
     - docker push jbmcnamara/multi-server 
