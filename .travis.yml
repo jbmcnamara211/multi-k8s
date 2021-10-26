@@ -4,13 +4,20 @@ services:
   
   before_install:
   
-    - docker build -t jbmcnamara211/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t jbmcnamara/react-test -f ./client/Dockerfile.dev ./client
     
   script:
     - docker run jbmcnamara211/react-test npm test -- --coverage
     
   after_success: 
-    - docker build -t jbmcnamara211/multi-client ./client
-    - docker build -t jbmcnamara211/multi-client ./nginx
-    - docker build -t jbmcnamara211/multi-client ./server
-    - docker build -t jbmcnamara211/multi-client ./worker
+    - docker build -t jbmcnamara/multi-client ./client
+    - docker build -t jbmcnamara/multi-nginx ./nginx
+    - docker build -t jbmcnamara/multi-server ./server
+    - docker build -t jbmcnamara/multi-worker ./worker
+    # Log in to the docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u  "$DOCKER_ID" --password-stdin
+    # Take those images and push them to docker hub
+    - docker push jbmcnamara/multi-client 
+    - docker push jbmcnamara/multi-nginx 
+    - docker push jbmcnamara/multi-server 
+    - docker push jbmcnamara/multi-worker
