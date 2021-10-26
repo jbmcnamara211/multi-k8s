@@ -4,10 +4,10 @@ services:
   
 before_install:
   
-  - docker build -t jbmcnamara/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jbmcnamara/multi-docker -f ./client/Dockerfile.dev ./client
     
 script:
-  - docker run jbmcnamara211/react-test npm test -- --coverage
+  - docker run jbmcnamara211/multi-docker npm test -- --coverage
     
 after_success: 
   - docker build -t jbmcnamara/multi-client ./client
