@@ -2,22 +2,22 @@ sudo: required
 services:
   - docker
   
-  before_install:
+before_install:
   
-    - docker build -t jbmcnamara/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jbmcnamara/react-test -f ./client/Dockerfile.dev ./client
     
-  script:
-    - docker run jbmcnamara211/react-test npm test -- --coverage
+script:
+  - docker run jbmcnamara211/react-test npm test -- --coverage
     
-  after_success: 
-    - docker build -t jbmcnamara/multi-client ./client
-    - docker build -t jbmcnamara/multi-nginx ./nginx
-    - docker build -t jbmcnamara/multi-server ./server
-    - docker build -t jbmcnamara/multi-worker ./worker
-    # Log in to the docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u  "$DOCKER_ID" --password-stdin
-    # Take those images and push them to docker hub today
-    - docker push jbmcnamara/multi-client 
-    - docker push jbmcnamara/multi-nginx 
-    - docker push jbmcnamara/multi-server 
-    - docker push jbmcnamara/multi-worker
+after_success: 
+  - docker build -t jbmcnamara/multi-client ./client
+  - docker build -t jbmcnamara/multi-nginx ./nginx
+  - docker build -t jbmcnamara/multi-server ./server
+  - docker build -t jbmcnamara/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub today OK!
+  - docker push jbmcnamara/multi-client 
+  - docker push jbmcnamara/multi-nginx 
+  - docker push jbmcnamara/multi-server 
+  - docker push jbmcnamara/multi-worker
