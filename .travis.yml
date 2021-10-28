@@ -9,14 +9,14 @@ script:
   - docker run -e CI=true jbmcnamara211/multi-docker npm test
     
 after_success: 
-  - docker build -t jbmcnamara/multi-client ./client
-  - docker build -t jbmcnamara/multi-nginx ./nginx
-  - docker build -t jbmcnamara/multi-server ./server
-  - docker build -t jbmcnamara/multi-worker ./worker
+  - docker build -t jbmcnamara211/multi-client ./client
+  - docker build -t jbmcnamara211/multi-nginx ./nginx
+  - docker build -t jbmcnamara211/multi-server ./server
+  - docker build -t jbmcnamara211/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub today OK!
-  - docker push jbmcnamara/multi-client 
-  - docker push jbmcnamara/multi-nginx 
-  - docker push jbmcnamara/multi-server 
-  - docker push jbmcnamara/multi-worker
+  - docker push jbmcnamara211/multi-client 
+  - docker push jbmcnamara211/multi-nginx 
+  - docker push jbmcnamara211/multi-server 
+  - docker push jbmcnamara211/multi-worker
