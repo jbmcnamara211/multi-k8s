@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project multi-k8s-331713
   - gcloud config set compute/zone northamerica-northeast1-a
   - gcloud container clusters get-credentials multi-cluster
-  - $DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+  - echo $DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
   - docker build -t jbmcnamara211/react-test -f ./client/Dockerfile.dev ./client
    
 script:
