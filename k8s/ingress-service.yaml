@@ -11,11 +11,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - yourdomain.com
-        - www.yourdomain.com
-      secretName: yourdomain-com
+        - k8s-multi.com
+        - www.k8s-multi.com
+      secretName: k8s-multi.com
   rules:
-    - host: yourdomain.com
+    - host: k8s-multi.com
       http:
         paths:
           - path: /?(.*)
@@ -32,7 +32,7 @@ spec:
                 name: server-cluster-ip-service
                 port:
                   number: 5000
-    - host: www.yourdomain.com
+    - host: www.k8s-multi.com
       http:
         paths:
           - path: /?(.*)
